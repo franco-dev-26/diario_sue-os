@@ -22,8 +22,8 @@ function saveDream() {
   const dreamObj = {
     text: input,
     date: date,
-    meanings: analysis.interpretaciones,
-    consejos: analysis.consejos,
+    meanings: analysis.interpretaciones.length ? analysis.interpretaciones : ["🔍 No se detectaron palabras clave conocidas."],
+    consejos: analysis.consejos.length ? analysis.consejos : ["💡 Consejo general: Reflexioná sobre lo que sentiste en el sueño y cómo se conecta con tu vida real."],
     emocion: analysis.emocionGeneral,
     combinacion: analysis.combinacion
   };
@@ -56,7 +56,7 @@ function renderDreams() {
         html += `<li>${meaning}</li>`;
       });
       html += `</ul>`;
-      totalClaves += dream.meanings.length;
+      totalClaves += dream.meanings.filter(m => m !== "🔍 No se detectaron palabras clave conocidas.").length;
     }
 
     if (dream.consejos.length > 0) {
@@ -65,7 +65,7 @@ function renderDreams() {
         html += `<li>${c}</li>`;
       });
       html += `</ul>`;
-      totalConsejos += dream.consejos.length;
+      totalConsejos += dream.consejos.filter(c => !c.startsWith("💡 Consejo general")).length;
     }
 
     html += `<br><strong>🌟 Emoción general:</strong> ${dream.emocion}`;
