@@ -38,25 +38,25 @@ function analizarSueno(texto) {
   const interpretaciones = [];
   const lowerText = texto.toLowerCase();
 
-  if (lowerText.includes("volar")) {
+  if (lowerText.match(/\bvolar\b/) || lowerText.includes("volé") || lowerText.includes("volaba")) {
     interpretaciones.push("Necesidad de libertad, deseos de superación");
   }
-  if (lowerText.includes("agua")) {
+  if (lowerText.match(/\bagua\b/) || lowerText.includes("mar") || lowerText.includes("río") || lowerText.includes("lluvia")) {
     interpretaciones.push("Estado emocional, flujo de la vida");
   }
-  if (lowerText.includes("fuego")) {
+  if (lowerText.match(/\bfuego\b/) || lowerText.includes("incendio")) {
     interpretaciones.push("Pasiones intensas o conflictos");
   }
-  if (lowerText.includes("caer")) {
+  if (lowerText.match(/\bcaer\b/) || lowerText.includes("caí") || lowerText.includes("caía") || lowerText.includes("me caí")) {
     interpretaciones.push("Miedo al fracaso o pérdida de control");
   }
-  if (lowerText.includes("oscuridad")) {
+  if (lowerText.match(/\boscuridad\b/) || lowerText.includes("oscuro")) {
     interpretaciones.push("Incertidumbre, miedo a lo desconocido");
   }
-  if (lowerText.includes("puente")) {
+  if (lowerText.match(/\bpuente\b/)) {
     interpretaciones.push("Cambio o transición en tu vida");
   }
-  if (lowerText.includes("perseguir")) {
+  if (lowerText.match(/\bperseguir\b/) || lowerText.includes("me perseguían") || lowerText.includes("me seguían")) {
     interpretaciones.push("Estrés, ansiedad, evitar un problema");
   }
 
@@ -64,4 +64,3 @@ function analizarSueno(texto) {
 }
 
 renderDreams();
-
