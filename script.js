@@ -1,19 +1,35 @@
 const diccionarioSuenos = [
-  { palabras: ["volar", "volé", "volaba"], significado: "Deseos de libertad o superación", emocion: "positivo", consejo: "Animate a tomar decisiones que te acerquen a tus metas en la vida real." },
-  { palabras: ["agua", "mar", "río", "lluvia"], significado: "Estado emocional o fluir de la vida", emocion: "neutral", consejo: "Prestá atención a cómo te sentís emocionalmente y dejá fluir lo que no podés controlar." },
-  { palabras: ["fuego", "incendio"], significado: "Pasiones intensas o conflictos", emocion: "intenso", consejo: "Reflexioná sobre qué situaciones te están generando tensión y buscá formas sanas de resolverlas." },
-  { palabras: ["caer", "caí", "caía"], significado: "Miedo al fracaso o pérdida de control", emocion: "angustiante", consejo: "Recordá que equivocarse es parte de aprender. No temas perder el control a veces." },
-  { palabras: ["oscuridad", "oscuro"], significado: "Incertidumbre, miedo a lo desconocido", emocion: "angustiante", consejo: "Intentá identificar qué aspectos de tu vida te generan inseguridad y buscá apoyo." },
-  { palabras: ["puente"], significado: "Cambio o transición en tu vida", emocion: "neutral", consejo: "Abrazá los cambios como oportunidades de crecimiento personal." },
-  { palabras: ["perseguir", "perseguían", "me seguían"], significado: "Estrés, ansiedad, evasión de un problema", emocion: "angustiante", consejo: "Enfrentá esos problemas que venís evitando, aunque cueste. Te va a traer paz." },
-  { palabras: ["serpiente"], significado: "Posible traición o tentación", emocion: "tenso", consejo: "Mantené los ojos abiertos ante posibles engaños o situaciones poco claras." },
-  { palabras: ["casa"], significado: "Refugio, identidad propia", emocion: "positivo", consejo: "Valorá tus espacios y las personas que te hacen sentir en casa." },
-  { palabras: ["bosque"], significado: "Confusión o búsqueda interior", emocion: "confuso", consejo: "Date un tiempo para reflexionar sobre tus objetivos y prioridades." }
+  { palabras: ["volar", "volé", "volaba", "alas", "planeaba"], significado: "Deseos de libertad o ganas de superarte", emocion: "positivo", consejo: "Animate a tomar decisiones que te acerquen a tus sueños." },
+  { palabras: ["agua", "mar", "río", "lluvia", "océano", "nadar", "inundación"], significado: "Refleja tus emociones y el rumbo de tu vida", emocion: "neutral", consejo: "Prestá atención a cómo te sentís y dejá fluir lo que no podés controlar." },
+  { palabras: ["fuego", "incendio", "llamas", "arder", "quemar"], significado: "Muestra que hay conflictos o emociones intensas", emocion: "intenso", consejo: "Buscá calmar tensiones y resolver lo que te preocupa." },
+  { palabras: ["caer", "caí", "caía", "precipicio", "abismo", "resbalar"], significado: "Temor a fracasar o perder el control", emocion: "angustiante", consejo: "Confiá en vos mismo y recordá que todos nos caemos alguna vez." },
+  { palabras: ["oscuridad", "oscuro", "tinieblas", "sombra", "noche"], significado: "Incertidumbre o miedo a lo desconocido", emocion: "angustiante", consejo: "Enfrentá lo que no entendés y buscá apoyo si lo necesitás." },
+  { palabras: ["puente", "cruce", "pasarela"], significado: "Cambio o transición en tu vida", emocion: "neutral", consejo: "Aprovechá las oportunidades que trae el cambio." },
+  { palabras: ["perseguir", "perseguían", "me seguían", "huir", "escapar", "correr"], significado: "Sentís ansiedad o que escapás de un problema", emocion: "angustiante", consejo: "Enfrentá lo que evitás y liberate de esa carga." },
+  { palabras: ["serpiente", "víbora", "cobra", "culebra"], significado: "Posible traición o tentación", emocion: "tenso", consejo: "Mantené los ojos abiertos ante posibles engaños." },
+  { palabras: ["casa", "hogar", "vivienda", "departamento", "habitación"], significado: "Tu refugio o tu identidad", emocion: "positivo", consejo: "Valorá lo que te hace sentir seguro y en paz." },
+  { palabras: ["bosque", "selva", "jungla", "árboles"], significado: "Confusión o necesidad de encontrarte a vos mismo", emocion: "confuso", consejo: "Date tiempo para reflexionar y buscar tu camino." },
+  { palabras: ["bebé", "niño", "recién nacido", "hijo", "embarazo"], significado: "Nuevos comienzos o proyectos en tu vida", emocion: "positivo", consejo: "Cuidá y hacé crecer esas nuevas ideas o proyectos." },
+  { palabras: ["auto", "coche", "vehículo", "conducir", "camioneta", "autobús"], significado: "Control sobre el rumbo de tu vida", emocion: "neutral", consejo: "Pensá si estás manejando tus decisiones o si algo te frena." },
+  { palabras: ["examen", "prueba", "evaluación", "test", "estudiar"], significado: "Inseguridad o miedo a no cumplir expectativas", emocion: "tenso", consejo: "Confiá en lo que sabés y no seas tan duro con vos mismo." },
+  { palabras: ["montaña", "cerro", "colina", "pico", "cima"], significado: "Desafíos y metas que querés alcanzar", emocion: "positivo", consejo: "Seguí esforzándote, cada paso te acerca a la cima." },
+  { palabras: ["sangre", "herida", "corte", "lastimadura"], significado: "Dolor emocional o pérdida de energía", emocion: "intenso", consejo: "Cuidá tu bienestar y alejate de lo que te hace daño." },
+  { palabras: ["muerte", "morir", "muerto", "fallecido", "cementerio"], significado: "Fin de una etapa y comienzo de otra", emocion: "confuso", consejo: "No temas a los cambios, son parte de la vida." },
+  { palabras: ["luz", "brillo", "claridad", "iluminación"], significado: "Esperanza o guía en momentos difíciles", emocion: "positivo", consejo: "Seguí ese camino que te da paz y confianza." },
+  { palabras: ["animal", "perro", "gato", "caballo", "león", "tigre"], significado: "Instintos y emociones básicas", emocion: "neutral", consejo: "Escuchá tus necesidades más profundas y auténticas." },
+  { palabras: ["escalera", "subir", "bajar", "peldaños"], significado: "Progreso o retroceso en tus objetivos", emocion: "neutral", consejo: "Fijate si estás avanzando hacia donde querés." },
+  { palabras: ["enfermedad", "hospital", "médico", "clínica"], significado: "Preocupación por tu salud o la de alguien", emocion: "tenso", consejo: "Cuidate y prestá atención a lo que tu cuerpo o mente piden." },
+  { palabras: ["dinero", "billete", "moneda", "plata"], significado: "Preocupación por lo material o por la seguridad", emocion: "neutral", consejo: "Recordá que el bienestar no depende solo de lo material." },
+  { palabras: ["reloj", "hora", "tiempo", "minutos"], significado: "Ansiedad por el paso del tiempo o por cumplir plazos", emocion: "tenso", consejo: "Respirá y tratá de disfrutar el presente sin tanta presión." },
+  { palabras: ["avión", "despegar", "aterrizar"], significado: "Grandes cambios o viajes en tu vida", emocion: "positivo", consejo: "Aprovechá las nuevas oportunidades que se presentan." },
+  { palabras: ["llorar", "lágrimas", "tristeza"], significado: "Liberación de emociones contenidas", emocion: "intenso", consejo: "Permitite sentir y soltar lo que te duele." },
+  { palabras: ["beso", "abrazar", "caricia"], significado: "Necesidad de afecto o cercanía", emocion: "positivo", consejo: "Buscá compartir momentos con quienes querés." }
 ];
 
 function saveDream() {
   const input = document.getElementById('dreamInput').value.trim();
   if (input === "") return alert("¡Escribí algo!");
+  if (input.length < 5) return alert("Escribí un poco más para analizar el sueño.");
 
   let dreams = JSON.parse(localStorage.getItem('dreams')) || [];
   const date = new Date().toLocaleString();
@@ -145,4 +161,3 @@ function analizarSueno(texto) {
 }
 
 renderDreams();
-
