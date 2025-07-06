@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🌙 Diario de Sueños</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <h1><i class="fas fa-moon"></i> Diario de Sueños</h1>
+
+  <p class="intro">
+    Bienvenido a tu Diario de Sueños 🌙.<br>
+    Escribí lo que soñaste en el cuadro de abajo y guardalo.<br>
+    La app intentará sugerir un posible significado según las palabras clave que encuentre.<br>
+    Todo se guarda solo en tu navegador, de forma privada.
+  </p>
+
+  <textarea id="dreamInput" placeholder="Escribí tu sueño aquí..."></textarea>
+  <button onclick="saveDream()"><i class="fas fa-save"></i> Guardar sueño</button>
+
+  <h2><i class="fas fa-list"></i> Tus sueños guardados</h2>
+  <ul id="dreamList"></ul>
+
+  <h2><i class="fas fa-chart-bar"></i> Estadísticas</h2>
+  <div id="stats">
+    <p>Total de sueños: <span id="totalSueños">0</span></p>
+    <p>Palabras clave detectadas: <span id="totalClaves">0</span></p>
+  </div>
+
+  <footer>
+    <small>Creado por Franco Aguinaga • v1.0</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
