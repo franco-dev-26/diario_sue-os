@@ -1,14 +1,64 @@
 const diccionarioSuenos = [
-  { palabras: ["volar", "volé", "volaba"], significado: "Deseos de libertad o superación", emocion: "positivo" },
-  { palabras: ["agua", "mar", "río", "lluvia"], significado: "Estado emocional o fluir de la vida", emocion: "neutral" },
-  { palabras: ["fuego", "incendio"], significado: "Pasiones intensas o conflictos", emocion: "intenso" },
-  { palabras: ["caer", "caí", "caía"], significado: "Miedo al fracaso o pérdida de control", emocion: "angustiante" },
-  { palabras: ["oscuridad", "oscuro"], significado: "Incertidumbre, miedo a lo desconocido", emocion: "angustiante" },
-  { palabras: ["puente"], significado: "Cambio o transición en tu vida", emocion: "neutral" },
-  { palabras: ["perseguir", "perseguían", "me seguían"], significado: "Estrés, ansiedad, evasión de un problema", emocion: "angustiante" },
-  { palabras: ["serpiente"], significado: "Posible traición o tentación", emocion: "tenso" },
-  { palabras: ["casa"], significado: "Refugio, identidad propia", emocion: "positivo" },
-  { palabras: ["bosque"], significado: "Confusión o búsqueda interior", emocion: "confuso" }
+  { 
+    palabras: ["volar", "volé", "volaba"], 
+    significado: "Deseos de libertad o superación", 
+    emocion: "positivo",
+    consejo: "Animate a tomar decisiones que te acerquen a tus metas en la vida real."
+  },
+  { 
+    palabras: ["agua", "mar", "río", "lluvia"], 
+    significado: "Estado emocional o fluir de la vida", 
+    emocion: "neutral",
+    consejo: "Prestá atención a cómo te sentís emocionalmente y dejá fluir lo que no podés controlar."
+  },
+  { 
+    palabras: ["fuego", "incendio"], 
+    significado: "Pasiones intensas o conflictos", 
+    emocion: "intenso",
+    consejo: "Reflexioná sobre qué situaciones te están generando tensión y buscá formas sanas de resolverlas."
+  },
+  { 
+    palabras: ["caer", "caí", "caía"], 
+    significado: "Miedo al fracaso o pérdida de control", 
+    emocion: "angustiante",
+    consejo: "Recordá que equivocarse es parte de aprender. No temas perder el control a veces."
+  },
+  { 
+    palabras: ["oscuridad", "oscuro"], 
+    significado: "Incertidumbre, miedo a lo desconocido", 
+    emocion: "angustiante",
+    consejo: "Intentá identificar qué aspectos de tu vida te generan inseguridad y buscá apoyo."
+  },
+  { 
+    palabras: ["puente"], 
+    significado: "Cambio o transición en tu vida", 
+    emocion: "neutral",
+    consejo: "Abrazá los cambios como oportunidades de crecimiento personal."
+  },
+  { 
+    palabras: ["perseguir", "perseguían", "me seguían"], 
+    significado: "Estrés, ansiedad, evasión de un problema", 
+    emocion: "angustiante",
+    consejo: "Enfrentá esos problemas que venís evitando, aunque cueste. Te va a traer paz."
+  },
+  { 
+    palabras: ["serpiente"], 
+    significado: "Posible traición o tentación", 
+    emocion: "tenso",
+    consejo: "Mantené los ojos abiertos ante posibles engaños o situaciones poco claras."
+  },
+  { 
+    palabras: ["casa"], 
+    significado: "Refugio, identidad propia", 
+    emocion: "positivo",
+    consejo: "Valorá tus espacios y las personas que te hacen sentir en casa."
+  },
+  { 
+    palabras: ["bosque"], 
+    significado: "Confusión o búsqueda interior", 
+    emocion: "confuso",
+    consejo: "Date un tiempo para reflexionar sobre tus objetivos y prioridades."
+  }
 ];
 
 function saveDream() {
@@ -23,6 +73,7 @@ function saveDream() {
     text: input,
     date: date,
     meanings: analysis.interpretaciones,
+    consejos: analysis.consejos,
     emocion: analysis.emocionGeneral,
     combinacion: analysis.combinacion
   };
@@ -55,6 +106,14 @@ function renderDreams() {
       totalClaves += dream.meanings.length;
     }
 
+    if (dream.consejos.length > 0) {
+      html += `<br><em>💡 Consejo:</em><ul>`;
+      dream.consejos.forEach(c => {
+        html += `<li>${c}</li>`;
+      });
+      html += `</ul>`;
+    }
+
     html += `<br><strong>🌟 Emoción general:</strong> ${dream.emocion}`;
     if (dream.combinacion) {
       html += `<br><strong>🌙 Combinación detectada:</strong> ${dream.combinacion}`;
@@ -85,6 +144,7 @@ function deleteDream(index) {
 function analizarSueno(texto) {
   const lowerText = texto.toLowerCase();
   const interpretaciones = [];
+  const consejos = [];
   const emociones = [];
 
   diccionarioSuenos.forEach(entry => {
@@ -92,6 +152,9 @@ function analizarSueno(texto) {
       if (lowerText.includes(palabra)) {
         if (!interpretaciones.includes(entry.significado)) {
           interpretaciones.push(entry.significado);
+        }
+        if (!consejos.includes(entry.consejo)) {
+          consejos.push(entry.consejo);
         }
         emociones.push(entry.emocion);
       }
@@ -118,7 +181,7 @@ function analizarSueno(texto) {
     combinacion = "Deseos de liberarse de un conflicto";
   }
 
-  return { interpretaciones, emocionGeneral, combinacion };
+  return { interpretaciones, consejos, emocionGeneral, combinacion };
 }
 
 renderDreams();
