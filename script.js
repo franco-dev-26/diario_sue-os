@@ -18,7 +18,7 @@ function renderDreams() {
   const list = document.getElementById('dreamList');
   list.innerHTML = "";
 
-  dreams.forEach(dream => {
+  dreams.forEach((dream, index) => {
     const li = document.createElement('li');
     li.innerHTML = `<strong>${dream.date}</strong><br>${dream.text}`;
     
@@ -30,8 +30,16 @@ function renderDreams() {
       li.innerHTML += `</ul>`;
     }
 
+    li.innerHTML += `<br><button onclick="deleteDream(${index})">🗑 Eliminar</button>`;
     list.appendChild(li);
   });
+}
+
+function deleteDream(index) {
+  let dreams = JSON.parse(localStorage.getItem('dreams')) || [];
+  dreams.splice(index, 1);
+  localStorage.setItem('dreams', JSON.stringify(dreams));
+  renderDreams();
 }
 
 function analizarSueno(texto) {
