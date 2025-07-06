@@ -1,64 +1,14 @@
 const diccionarioSuenos = [
-  { 
-    palabras: ["volar", "volé", "volaba"], 
-    significado: "Deseos de libertad o superación", 
-    emocion: "positivo",
-    consejo: "Animate a tomar decisiones que te acerquen a tus metas en la vida real."
-  },
-  { 
-    palabras: ["agua", "mar", "río", "lluvia"], 
-    significado: "Estado emocional o fluir de la vida", 
-    emocion: "neutral",
-    consejo: "Prestá atención a cómo te sentís emocionalmente y dejá fluir lo que no podés controlar."
-  },
-  { 
-    palabras: ["fuego", "incendio"], 
-    significado: "Pasiones intensas o conflictos", 
-    emocion: "intenso",
-    consejo: "Reflexioná sobre qué situaciones te están generando tensión y buscá formas sanas de resolverlas."
-  },
-  { 
-    palabras: ["caer", "caí", "caía"], 
-    significado: "Miedo al fracaso o pérdida de control", 
-    emocion: "angustiante",
-    consejo: "Recordá que equivocarse es parte de aprender. No temas perder el control a veces."
-  },
-  { 
-    palabras: ["oscuridad", "oscuro"], 
-    significado: "Incertidumbre, miedo a lo desconocido", 
-    emocion: "angustiante",
-    consejo: "Intentá identificar qué aspectos de tu vida te generan inseguridad y buscá apoyo."
-  },
-  { 
-    palabras: ["puente"], 
-    significado: "Cambio o transición en tu vida", 
-    emocion: "neutral",
-    consejo: "Abrazá los cambios como oportunidades de crecimiento personal."
-  },
-  { 
-    palabras: ["perseguir", "perseguían", "me seguían"], 
-    significado: "Estrés, ansiedad, evasión de un problema", 
-    emocion: "angustiante",
-    consejo: "Enfrentá esos problemas que venís evitando, aunque cueste. Te va a traer paz."
-  },
-  { 
-    palabras: ["serpiente"], 
-    significado: "Posible traición o tentación", 
-    emocion: "tenso",
-    consejo: "Mantené los ojos abiertos ante posibles engaños o situaciones poco claras."
-  },
-  { 
-    palabras: ["casa"], 
-    significado: "Refugio, identidad propia", 
-    emocion: "positivo",
-    consejo: "Valorá tus espacios y las personas que te hacen sentir en casa."
-  },
-  { 
-    palabras: ["bosque"], 
-    significado: "Confusión o búsqueda interior", 
-    emocion: "confuso",
-    consejo: "Date un tiempo para reflexionar sobre tus objetivos y prioridades."
-  }
+  { palabras: ["volar", "volé", "volaba"], significado: "Deseos de libertad o superación", emocion: "positivo", consejo: "Animate a tomar decisiones que te acerquen a tus metas en la vida real." },
+  { palabras: ["agua", "mar", "río", "lluvia"], significado: "Estado emocional o fluir de la vida", emocion: "neutral", consejo: "Prestá atención a cómo te sentís emocionalmente y dejá fluir lo que no podés controlar." },
+  { palabras: ["fuego", "incendio"], significado: "Pasiones intensas o conflictos", emocion: "intenso", consejo: "Reflexioná sobre qué situaciones te están generando tensión y buscá formas sanas de resolverlas." },
+  { palabras: ["caer", "caí", "caía"], significado: "Miedo al fracaso o pérdida de control", emocion: "angustiante", consejo: "Recordá que equivocarse es parte de aprender. No temas perder el control a veces." },
+  { palabras: ["oscuridad", "oscuro"], significado: "Incertidumbre, miedo a lo desconocido", emocion: "angustiante", consejo: "Intentá identificar qué aspectos de tu vida te generan inseguridad y buscá apoyo." },
+  { palabras: ["puente"], significado: "Cambio o transición en tu vida", emocion: "neutral", consejo: "Abrazá los cambios como oportunidades de crecimiento personal." },
+  { palabras: ["perseguir", "perseguían", "me seguían"], significado: "Estrés, ansiedad, evasión de un problema", emocion: "angustiante", consejo: "Enfrentá esos problemas que venís evitando, aunque cueste. Te va a traer paz." },
+  { palabras: ["serpiente"], significado: "Posible traición o tentación", emocion: "tenso", consejo: "Mantené los ojos abiertos ante posibles engaños o situaciones poco claras." },
+  { palabras: ["casa"], significado: "Refugio, identidad propia", emocion: "positivo", consejo: "Valorá tus espacios y las personas que te hacen sentir en casa." },
+  { palabras: ["bosque"], significado: "Confusión o búsqueda interior", emocion: "confuso", consejo: "Date un tiempo para reflexionar sobre tus objetivos y prioridades." }
 ];
 
 function saveDream() {
@@ -91,6 +41,9 @@ function renderDreams() {
   list.innerHTML = "";
 
   let totalClaves = 0;
+  let totalConsejos = 0;
+  let totalCombinaciones = 0;
+  let emocionSet = new Set();
 
   dreams.forEach((dream, index) => {
     const li = document.createElement('li');
@@ -112,11 +65,15 @@ function renderDreams() {
         html += `<li>${c}</li>`;
       });
       html += `</ul>`;
+      totalConsejos += dream.consejos.length;
     }
 
     html += `<br><strong>🌟 Emoción general:</strong> ${dream.emocion}`;
+    emocionSet.add(dream.emocion);
+
     if (dream.combinacion) {
       html += `<br><strong>🌙 Combinación detectada:</strong> ${dream.combinacion}`;
+      totalCombinaciones++;
     }
 
     li.innerHTML = html;
@@ -132,6 +89,9 @@ function renderDreams() {
 
   document.getElementById('totalSueños').textContent = dreams.length;
   document.getElementById('totalClaves').textContent = totalClaves;
+  document.getElementById('totalConsejos').textContent = totalConsejos;
+  document.getElementById('totalCombos').textContent = totalCombinaciones;
+  document.getElementById('totalEmociones').textContent = emocionSet.size;
 }
 
 function deleteDream(index) {
@@ -185,3 +145,4 @@ function analizarSueno(texto) {
 }
 
 renderDreams();
+
